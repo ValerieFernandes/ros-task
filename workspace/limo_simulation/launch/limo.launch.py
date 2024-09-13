@@ -50,6 +50,12 @@ def generate_launch_description():
         ],
     )
 
+    limo_controller = Node(
+        package='limo_control', 
+        executable='controller_node',
+        name='controller_node',
+    )
+
     gz_spawn_entity = Node(
         package="ros_gz_sim",
         executable="create",
@@ -84,6 +90,7 @@ def generate_launch_description():
         DeclareLaunchArgument("world_file", default_value=world_file),
         robot_state_publisher,
         gz_spawn_entity,
+        limo_controller,
         gz_sim,
         gz_ros2_bridge
     ])
